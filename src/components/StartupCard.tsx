@@ -17,7 +17,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
       {/* Image / Preview */}
       
       <div className=' absolute flex gap-1.5 top-3 right-2'>
-          <EyeIcon className='size-6 text-blue-900 ' />
+          <EyeIcon className='size-6 text-violet-700 ' />
           <span className=' text-16-medium '> {views} </span>
         </div>
 
@@ -32,7 +32,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
       
 
       {/* Floating author avatar */}
-      <div className="w-28 h-28 mt-8 rounded-full border-4 border-slate-50 z-10 bg-white overflow-hidden transform transition-all duration-500 group-hover:scale-80 group-hover:-translate-x-36 group-hover:-translate-y-10 shadow-lg">
+      <div className="w-20 h-20 mt-8 rounded-full border-4 border-slate-50 z-10 bg-white overflow-hidden transform transition-all duration-500 group-hover:scale-80 absolute left-0 -top-8 shadow-lg">
         <Link href={`/user/${author?._id}`}>
           <Image
             src={
@@ -42,8 +42,9 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             alt="Author"
             width={110}
             height={110}
-            className="rounded-full object-cover"
+            className="rounded-full object-contain"
           />
+          
         </Link>
       </div>
 
@@ -59,17 +60,17 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           </h3>
         </Link>
 
-        <p className="text-gray-50 text-shadow-2x text-sm mt-1 line-clamp-2 px-4">
+        <p className="text-gray-800 text-shadow-2x text-sm mt-1 line-clamp-2 px-4">
           {description}
         </p>
 
-        <p className="text-xs text-gray-100 mt-2">{formatDate(_createdAt)}</p>
+        <p className="text-xs text-gray-700 mt-2">{formatDate(_createdAt)}</p>
       </div>
 
       {/* Follow / Details button */}
       <Link
         href={`/startup/${_id}`}
-        className="bg-blue-700 text-slate-50 px-4 py-1 rounded-md z-10 mt-3 hover:scale-110 transition-all duration-500 hover:bg-blue-500"
+        className="bg-violet-700 text-slate-50 px-4 py-1 rounded-md z-10 mt-3 hover:scale-110 transition-all duration-300 hover:bg-violet-500"
       >
         Details
       </Link>

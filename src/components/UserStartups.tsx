@@ -1,6 +1,5 @@
 import { STARTUPS_BY_AUTHOR_QUERY } from '@/lib/queries'
 import { client } from '@/sanity/lib/client'
-import StartupCard, { StartupTypeCard } from './StartupCard'
 import UserStartupCard from './UserStartupCard';
 
 const UserStartups = async ({ id }: { id: string }) => {

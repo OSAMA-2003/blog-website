@@ -9,11 +9,15 @@ import { EyeIcon, Trash2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import { deletePitch } from "@/lib/actions"
+import { useSession } from "next-auth/react"
 
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author }
 
 const UserStartupCard = ({ post }: { post: StartupTypeCard }) => {
-  const { views, _id, title, image, description, category } = post
+  const { views, _id, title, image, description, category, author } = post
+  const { data: session } = useSession();
+  const currentUserId = session?.id;
+
   const { toast } = useToast()
   const router = useRouter()
 
@@ -36,6 +40,8 @@ const UserStartupCard = ({ post }: { post: StartupTypeCard }) => {
     }
   }
 
+  const canDelete = currentUserId === author?._id
+
   return (
     <div className="relative group w-full h-72 bg-slate-40 rounded-2xl overflow-hidden flex flex-col items-center justify-center text-center shadow-md transition-all duration-500 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-bl before:from-sky-100 before:via-violet-200 before:to-blue-700 before:rounded-2xl before:transition-all before:duration-500 hover:before:scale-95 hover:before:h-72 hover:before:w-full">
       {/* Image / Preview */}
@@ -45,13 +51,15 @@ const UserStartupCard = ({ post }: { post: StartupTypeCard }) => {
           <span className=' text-16-medium '> {views} </span>
         </div>
 
-      <button
-        onClick={handleDelete}
-        className="absolute top-3 left-3 z-20 bg-red-500/80 hover:bg-red-600 p-2 rounded-full text-white"
-        aria-label="Delete startup"
-      >
-        <Trash2 className="size-4" />
-      </button>
+      {canDelete && (
+        <button
+          onClick={handleDelete}
+          className="absolute top-3 left-3 z-20 bg-red-500/80 hover:bg-red-600 p-2 rounded-full text-white"
+          aria-label="Delete startup"
+        >
+          <Trash2 className="size-4" />
+        </button>
+      )}
 
       <Link href={`/startup/${_id}`}>
         <img

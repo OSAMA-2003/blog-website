@@ -1,12 +1,10 @@
 "use server";
 
-
 import { parseServerActionResponse } from "@/lib/utils";
 import slugify from "slugify";
 import { writeClient } from "@/sanity/lib/write-client";
 import { auth } from "../../auth";
 import { revalidatePath } from "next/cache";
-
 
 export const createPitch = async (
   state: any,
@@ -45,6 +43,10 @@ export const createPitch = async (
     };
 
     const result = await writeClient.create({ _type: "startup", ...startup });
+
+    // Add revalidation here to update the cache
+    revalidatePath("/");
+    revalidatePath(`/user/${session.id}`);
 
     return parseServerActionResponse({
       ...result,

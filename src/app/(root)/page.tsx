@@ -5,28 +5,24 @@ import { auth } from "../../../auth";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 import { Pen, Notebook, BookOpen } from "lucide-react";
 
-
+// Add these exports to force dynamic rendering
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function Home({searchParams}:{
   searchParams:Promise< {query?:string} >
-
 }) {
 
   const query = (await searchParams).query
-
 
   const params = {search: query || null}
 
   const {data:posts} = await sanityFetch({query:STARTUPS_QUERY,params})
 
-
   console.log( JSON.stringify(posts, null , 2) )
-
 
   const session = await auth()
   console.log(session?.id)
-
-
 
   return (
     <>
@@ -64,7 +60,6 @@ export default async function Home({searchParams}:{
         </div>
       </div>
     </section>
-
 
       {/* Blogs Section */}
 

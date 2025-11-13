@@ -1,16 +1,26 @@
 "use client"
 
-import { formatDate } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import { Author, Startup } from "@/sanity/types"
 import { EyeIcon } from "lucide-react"
+import { Skeleton } from "./ui/skeleton"
 
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author }
 
 const StartupCard = ({ post }: { post: StartupTypeCard }) => {
-  const { _createdAt,views, author, _id, title, image, description, category } = post
+  const {
+    _createdAt,
+    views,
+    author,
+    title,
+    category,
+    _id,
+    image,
+    description,
+  } = post;
 
   return (
     <div className="relative group w-full  h-72 bg-slate-40 rounded-2xl overflow-hidden flex flex-col items-center justify-center text-center shadow-md transition-all duration-500 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-bl before:from-sky-100 before:via-violet-200 before:to-violet-700 before:rounded-2xl before:transition-all before:duration-500 hover:before:scale-95 hover:before:h-72 hover:before:w-full">
@@ -82,5 +92,19 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
     </div>
   )
 }
+
+
+export const StartupCardSkeleton = () => (
+  <>
+    {[0, 1, 2, 3, 4].map((index: number) => (
+      <li key={cn("skeleton", index)}>
+        <Skeleton className="startup-card_skeleton" />
+      </li>
+    ))}
+  </>
+);
+
+
+
 
 export default StartupCard

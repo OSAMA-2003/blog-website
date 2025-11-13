@@ -5,10 +5,11 @@ import { AUTHOR_BY_ID_QUERY } from '@/lib/queries'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import UserStartups from '@/components/UserStartups'
-import  StartupCardSkeleton  from '@/components/StartupCard'
-
+import  {StartupCardSkeleton}  from '@/components/StartupCard'
 
 export const experimental_ppr = true;
+// Add revalidation
+export const revalidate = 0;
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;

@@ -115,7 +115,7 @@ background-image: linear-gradient(to bottom, #41049d, #420072, #7600a5, #5800ca,
     }
 
     .profile_card {
-        @apply w-80 px-6 pb-6 pt-20 flex flex-col justify-center items-center bg-blue-500 border-[5px] border-black shadow rounded-[30px] relative z-0 h-fit max-lg:w-full;
+        @apply w-80 px-6 pb-6 pt-20 flex flex-col justify-center items-center bg-violet-700 border-[5px] border-black shadow rounded-[30px] relative z-0 h-fit max-lg:w-full;
     }
 
     .profile_title {
@@ -221,7 +221,7 @@ background-image: linear-gradient(to bottom, #41049d, #420072, #7600a5, #5800ca,
     }
 
     .view-text {
-        @apply font-medium text-[16px] bg-blue-400 px-4 py-2 rounded-lg capitalize;
+        @apply font-medium text-[16px] bg-violet-400 px-4 py-2 rounded-lg capitalize;
     }
 
     .category-tag {

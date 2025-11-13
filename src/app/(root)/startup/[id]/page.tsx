@@ -94,18 +94,18 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
     {/* Title + Date */}
     <div>
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-950 mb-2">
+      <h1 className="text-3xl md:text-4xl drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] font-bold text-gray-200 mb-2">
         {post.title}
       </h1>
       <p className="text-gray-400 text-sm">{formatDate(post?._createdAt)}</p>
     </div>
 
     {/* Description */}
-    <p className="text-gray-400 leading-relaxed">{post.description}</p>
+    <p className="text-gray-300 leading-relaxed">{post.description}</p>
 
     {/* Pitch Details */}
     <div>
-      <h3 className="text-2xl font-semibold text-gray-950 mb-3">
+      <h3 className="text-2xl drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] font-bold text-gray-50 mb-3">
         Blog Details
       </h3>
       {parsedContent ? (

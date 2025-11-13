@@ -3,7 +3,8 @@ import { STARTUPS_QUERY } from "@/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { auth } from "../../../auth";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
-import { Pen, Notebook, BookOpen, FileText } from "lucide-react";
+import { Pen, Notebook, BookOpen } from "lucide-react";
+
 
 
 export default async function Home({searchParams}:{
